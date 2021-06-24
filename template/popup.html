@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  	<title>Popup with Vertical Drawer</title>
+ 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="libs/fontawesome/css/all.min.css" type="text/css">
+	<link rel="stylesheet" href="libs/CSShake.min.css" type="text/css">
+	<link rel="stylesheet" href="libs/WickedCSS.min.css" type="text/css">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<link rel="stylesheet" href="../game/css/game.css" type="text/css">
+</head>
+
+<body class="game-drawer-visible">
+	<div id="content">
+		<div id="header">
+			<a id="icon-link" href="" target="_blank">
+				<!-- Set icon link from game.js -->
+				<img class="icon" src="../game/images/icon_128.png">
+			</a>
+			<div id="title">
+				<!-- Load game/title.html from game.js -->
+			</div>
+			<a id="rules-link" href="" target="_blank"></a>
+				<!-- Set rules link from game.js -->
+				<i class="fas fa-gavel"></i>
+			</a>
+			<i class="fas fa-cog"></i>
+			<i class="fas fa-times"></i>
+		</div>
+		<div id="main">
+			<div id="toggle-video-chat-client"></div>
+			<div id="game-drawer">
+				<ul class="game-items">
+					<li><a href="https://playtcubed.com/shop/tcubed-tic-tac-toe-game/" target="_blank">
+						<div class="game-item tcubed" id="">
+							<div class="ribbon"><span>Added</span></div>
+							<img src="images/games/tcubed.png" alt="">
+							<h1>tCubed</h1>
+						</div></a>
+					</li>
+					<li id="tic-tac-toe-item">
+						<a id="tic-tac-toe-item-link" target="_blank">
+						<div class="game-item tic-tac-toe" >
+							<div class="ribbon"><span>Added</span></div>
+							<img src="images/games/tic-tac-toe.png" alt="">
+							<h1>Tic Tac Toe</h1>
+						</div></a>
+					</li>
+					<li id="rubiks-cube-item">
+						<a id="rubiks-cube-item-link" target="_blank">
+						<div class="game-item rubiks-cube" >
+							<div class="ribbon"><span>Added</span></div>
+							<img src="images/games/rubiks-cube.jpg" alt="">
+							<h1>Rubik's Cube</h1>
+						</div></a>
+					</li>
+				</ul>
+			</div>
+			<div class="background">
+				<div id="video-chat-client"></div>
+				<div id="poly-shadow" class="poly-shadow"></div>
+				<div class="game-container">	
+					<!-- TODO replace fa-gamepad with fa-crown after we have enough games to show the right menu -->
+					<i class="fas fa-gamepad feature-drawer-handle toggle-drawers" aria-hidden="true"></i>
+					<div id="game"></div>		
+					<!-- TODO replace fa-cog with fa-gamepad after we have enough games to show the right menu -->
+					<i class="fas fa-cog game-drawer-handle toggle-drawers" aria-hidden="true"></i>
+					<a id="sponsor-link" href="https://jointoucan.com/partners/tcubed" title="Sponsored by Toucan" target="_blank">
+						<img src="images/sponsors/toucan-logotype-horizontal-transparent-38px.png" alt="">
+					</a>
+				</div>	
+			</div>		
+		</div>
+		<div id="footer">
+			<div id="logo" class="pulse">
+				<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				height="100%" stroke-width="0" viewBox="0 0 122 36" enable-background="new 0 0 122 36" xml:space="preserve">
+					<path class="logo orange" d="M9.4,22l-4.6-2.6l0,5.3l4.6,2.6L9.4,22 M16.3,18L4.9,11.4l0,2.6l9.1,5.3l0,10.5l2.3,1.3L16.3,18"/>
+					<path class="logo pink" d="M23.1,21.9l0,5.2l4.5-2.6l0-5.2L23.1,21.9 M16.3,18l0,13.1l2.3-1.3l0-10.5l9.1-5.3l0-2.6L16.3,18"/>
+					<polygon class="logo blue" points="4.9,11.4 16.3,18 18.6,16.7 27.7,11.4 25.4,10.1 16.3,15.4 9.4,11.4 18.5,6.2 16.2,4.8 7.1,10.1"/>
+					<path class="logo gray" d="M34.1,11.6l3.4-0.6v3.6h4.1v2.9h-4.1v4.3c0,0.7,0.1,1.3,0.4,1.7c0.3,0.4,0.8,0.6,1.5,0.6
+						c0.4,0,0.7,0,1.1-0.1c0.4-0.1,0.7-0.2,1.1-0.3l0.5,2.7c-0.4,0.2-0.9,0.3-1.4,0.4C40.3,27,39.6,27,38.9,27c-0.9,0-1.7-0.1-2.3-0.4
+						c-0.6-0.3-1.1-0.6-1.5-1.1c-0.4-0.5-0.6-1-0.8-1.6c-0.1-0.6-0.2-1.4-0.2-2.1V11.6z"/>
+					<path class="logo gray" d="M52,27.1c-2.6,0-4.6-0.7-5.9-2.2c-1.4-1.4-2-3.5-2-6.1c0-1.3,0.2-2.5,0.6-3.5c0.4-1,1-1.9,1.7-2.6
+						c0.7-0.7,1.6-1.3,2.6-1.6c1-0.4,2.1-0.6,3.2-0.6c0.7,0,1.3,0,1.8,0.1c0.6,0.1,1,0.2,1.5,0.3c0.4,0.1,0.8,0.3,1,0.4
+						c0.3,0.1,0.5,0.2,0.6,0.3l-1,2.9c-0.5-0.3-1.1-0.5-1.7-0.7c-0.7-0.2-1.4-0.3-2.2-0.3c-0.6,0-1.1,0.1-1.6,0.3
+						c-0.5,0.2-1,0.5-1.4,0.9c-0.4,0.4-0.7,0.9-1,1.6c-0.2,0.6-0.4,1.4-0.4,2.3c0,0.7,0.1,1.4,0.2,2.1c0.2,0.6,0.4,1.2,0.8,1.6
+						c0.4,0.5,0.8,0.8,1.4,1.1c0.6,0.3,1.3,0.4,2.1,0.4c0.5,0,1,0,1.4-0.1c0.4-0.1,0.8-0.1,1.1-0.2s0.6-0.2,0.9-0.3
+						c0.2-0.1,0.5-0.2,0.7-0.3l1,2.9c-0.5,0.3-1.2,0.6-2.1,0.8C54.2,27,53.2,27.1,52,27.1z"/>
+					<path class="logo gray" d="M69.4,26.4c-0.6,0.2-1.3,0.3-2.3,0.5C66.2,27,65.3,27,64.3,27c-1,0-1.9-0.1-2.6-0.4
+						c-0.7-0.3-1.2-0.7-1.6-1.2c-0.4-0.5-0.7-1.1-0.9-1.8C59,23,59,22.2,59,21.4v-6.7h3.4V21c0,1.1,0.1,1.9,0.4,2.4
+						c0.3,0.5,0.8,0.7,1.6,0.7c0.2,0,0.5,0,0.8,0c0.3,0,0.5,0,0.7-0.1v-9.3h3.4V26.4z"/>
+					<path class="logo gray" d="M83.9,20.7c0,1-0.1,1.8-0.4,2.6c-0.3,0.8-0.7,1.5-1.2,2c-0.5,0.6-1.2,1-2,1.3c-0.8,0.3-1.7,0.4-2.7,0.4
+						c-0.4,0-0.8,0-1.3-0.1c-0.5,0-0.9-0.1-1.3-0.1c-0.4-0.1-0.9-0.1-1.3-0.2c-0.4-0.1-0.8-0.2-1.1-0.3V9.5l3.4-0.6v6
+						c0.4-0.2,0.8-0.3,1.2-0.4s0.9-0.1,1.3-0.1c0.9,0,1.6,0.1,2.3,0.4c0.7,0.3,1.2,0.7,1.7,1.3c0.4,0.6,0.8,1.2,1,2
+						C83.8,18.9,83.9,19.8,83.9,20.7z M80.4,20.6c0-2.2-0.8-3.3-2.4-3.3c-0.4,0-0.7,0-1,0.1c-0.3,0.1-0.6,0.2-0.8,0.3V24
+						c0.2,0,0.4,0.1,0.6,0.1c0.3,0,0.5,0,0.9,0c0.9,0,1.6-0.3,2.1-1C80.2,22.5,80.4,21.7,80.4,20.6z"/>
+					<path class="logo gray" d="M86,20.8c0-1.1,0.2-2,0.5-2.8c0.3-0.8,0.8-1.5,1.3-2c0.5-0.5,1.2-0.9,1.9-1.2c0.7-0.3,1.4-0.4,2.2-0.4
+						c1.7,0,3.1,0.5,4.1,1.6c1,1.1,1.5,2.6,1.5,4.6c0,0.2,0,0.4,0,0.7c0,0.2,0,0.4,0,0.6h-7.8c0.1,0.7,0.4,1.3,1,1.7
+						c0.6,0.4,1.4,0.6,2.3,0.6c0.6,0,1.2-0.1,1.9-0.2c0.6-0.1,1.1-0.3,1.5-0.4l0.5,2.8c-0.2,0.1-0.4,0.2-0.7,0.3
+						c-0.3,0.1-0.6,0.2-1,0.2c-0.4,0.1-0.8,0.1-1.2,0.2c-0.4,0-0.9,0.1-1.3,0.1c-1.1,0-2-0.2-2.8-0.5c-0.8-0.3-1.5-0.8-2-1.3
+						c-0.5-0.6-0.9-1.2-1.2-2C86.1,22.5,86,21.7,86,20.8z M94,19.5c0-0.3-0.1-0.6-0.1-0.9c-0.1-0.3-0.2-0.5-0.4-0.7
+						c-0.2-0.2-0.4-0.4-0.7-0.5c-0.3-0.1-0.6-0.2-1-0.2c-0.4,0-0.7,0.1-1,0.2c-0.3,0.1-0.5,0.3-0.7,0.5c-0.2,0.2-0.3,0.5-0.4,0.7
+						s-0.2,0.6-0.2,0.9H94z"/>
+					<path class="logo gray" d="M110.7,26.4c-0.3,0.1-0.7,0.2-1.1,0.3c-0.4,0.1-0.8,0.2-1.3,0.2c-0.4,0.1-0.9,0.1-1.3,0.1
+						c-0.5,0-0.9,0.1-1.3,0.1c-1,0-1.9-0.1-2.7-0.4c-0.8-0.3-1.4-0.7-2-1.3c-0.5-0.5-0.9-1.2-1.2-2c-0.3-0.8-0.4-1.6-0.4-2.6
+						c0-1,0.1-1.9,0.4-2.7c0.2-0.8,0.6-1.5,1.1-2c0.5-0.6,1-1,1.7-1.3c0.7-0.3,1.4-0.4,2.3-0.4c0.5,0,0.9,0,1.3,0.1
+						c0.4,0.1,0.8,0.2,1.1,0.4V9.5l3.4-0.6V26.4z M102.9,20.6c0,1.1,0.2,1.9,0.7,2.6c0.5,0.6,1.2,1,2.1,1c0.3,0,0.6,0,0.9,0
+						c0.3,0,0.5,0,0.6-0.1v-6.2c-0.2-0.1-0.5-0.3-0.8-0.3c-0.3-0.1-0.7-0.1-1-0.1C103.7,17.3,102.9,18.4,102.9,20.6z"/>
+					<path class="logo gray" d="M112.3,6.4h-0.9V6.1h2.2v0.3h-0.9V9h-0.4V6.4z"/>
+					<path class="logo gray" d="M116.5,7.7c0-0.4,0-0.9,0-1.3h0c-0.1,0.3-0.2,0.7-0.4,1.1L115.5,9h-0.3l-0.5-1.4c-0.1-0.4-0.3-0.8-0.3-1.1
+						h0c0,0.4,0,0.9-0.1,1.3L114.2,9h-0.4l0.2-3h0.5l0.5,1.4c0.1,0.4,0.2,0.7,0.3,1h0c0.1-0.3,0.2-0.6,0.3-1l0.5-1.4h0.5l0.2,3h-0.4
+						L116.5,7.7z"/>
+			   	</svg>
+			</div>
+			<div id="social-icons">
+				<div class="social-icon">
+					<a href="https://playtcubed.com/shop/tcubed-tic-tac-toe-game/" target="_blank">
+					<i class="fas fa-globe-americas"></i>
+					</a>
+				</div>
+				<div class="social-icon">
+					<a href="https://www.facebook.com/playtcubed" target="_blank">
+					<i class="fab fa-facebook-square"></i>
+					</a>
+				</div>
+				<div class="social-icon">
+					<a href="https://twitter.com/PlaytCubed" target="_blank">
+					<i class="fab fa-twitter"></i>
+					</a>
+				</div>
+				<div class="social-icon">
+					<a href="https://plus.google.com/u/0/106545163997618735476" target="_blank">
+					<i class="fab fa-google-plus-g"></i>
+					</a>
+				</div>
+				<div class="social-icon">
+					<a href="https://www.youtube.com/channel/UCI5SX_Mf2n95ajltf1kquyQ" target="_blank">
+					<i class="fab fa-youtube"></i>
+					</a>
+				</div>
+				<div class="social-icon">
+					<a href="https://www.linkedin.com/in/christopher-sprague-25321945/" target="_blank">
+					<i class="fab fa-linkedin"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="settings">
+			<div class="header"><h1>Settings</h1><i class="fas fa-times"></i></div>
+			<hr>
+			<div class="contents">
+			</div>
+		</div>
+		<div class="settings-shadow"></div>
+		<div class="settings-shadow layer2"></div>
+		<div class="settings-shadow layer3"></div>
+	</div>
+	<div id="right-menu">
+		<div class="demo-delete">
+			<ul>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+				<li>Hello World</li>
+			</ul>
+		</div>
+	</div>
+	<div id="video-chat-client-modals"></div>
+	
+	<!-- 
+		The basic javascript libaries and javascript files for the template and game are loaded here. 
+		Any other loading of js by the game is considered inline and will be blocked unless the sha for that script is provided in the manifest.
+		So, if the script is a stable library that is only updated occassionally, it should be added to the game/libs folder and its SHA should 
+		be added to the manifest. Otherwise, just add the script to game.js to avoid having to constantly update the SHAs in the manifest.
+	-->
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/jquery-timing-plugin.min.js"></script>
+	<script src="libs/anime.min.js"></script>
+	<!-- <script src="libs/bootstrap.js"></script> -->
+	<script src="js/popup.g.js"></script>	
+	<script src="../game/js/game.js"></script>	
+</body>
+</html>

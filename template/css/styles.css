@@ -1,0 +1,674 @@
+/*  Modal Structure */
+/*  Popup Dimension Limitations set by chrome:
+    max-width: 600px;
+    max-height: 800px; */
+:root {
+    --transparent: rgba(0,0,0,0);
+    --white: #fff;
+    --gray1: #f3f3f3;
+    --gray2: #e7e7e7;
+    --gray3: #dadada;
+    --gray4: #cdcdcd;
+    --gray5: #c0c0c0;
+    --gray6: #b4b4b4;
+    --gray7: #a7a7a7;
+    --black: #000;
+    --orange: #ffa902;
+    --pink: #f44d9c;
+    --blue: #00c1cf;
+}
+
+.transparent,
+.transparent-hover:hover {color:var(--transparent); fill:var(--transparent);}
+.transparent-bg,
+.transparent-bg-hover:hover {background:var(--transparent);}
+.transparent-stroke,
+.transparent-stroke-hover:hover {stroke:var(--transparent); stroke-miterlimit:10;}
+.white,
+.white-hover:hover {color:var(--white); fill:var(--white);}
+.white-bg,
+.white-bg-hover:hover {background:var(--white);}
+.white-stroke,
+.white-stroke-hover:hover {stroke:var(--white); stroke-miterlimit:10;}
+.gray {color: var(--gray5); fill:var(--gray5);}
+.gray-bg {background: var(--gray5);}
+.gray-dark {color: var(--gray7); fill: var(--gray7);}
+.gray-dark-bg {background: var(--gray7);}
+.orange,
+.orange-hover:hover {color:var(--orange); fill:var(--orange);}
+.orange-bg,
+.orange-bg-hover:hover {background:var(--orange);}
+.orange-stroke,
+.orange-stroke-hover:hover {stroke:var(--orange); stroke-miterlimit:10;}
+.pink,
+.pink-hover:hover {color:var(--pink); fill:var(--pink);}
+.pink-bg,
+.pink-bg-hover:hover {background:var(--pink);}
+.pink-stroke,
+.pink-stroke-hover:hover {stroke:var(--pink); stroke-miterlimit:10;}
+.blue,
+.blue-hover:hover {color:var(--blue);  fill:var(--blue);}
+.blue-bg,
+.blue-bg-hover:hover {background:var(--blue);}
+.blue-stroke,
+.blue-stroke-hover:hover {stroke:var(--blue); stroke-miterlimit:10;}
+
+@font-face {
+    font-family: "CaramelMacchiatoBouncy";
+    src: url("/template/fonts/CaramelMacchiatoBouncy.otf");
+}
+
+@font-face {
+    font-family: "UbuntuBold";
+    src: url("/template/fonts/Ubuntu-Bold.ttf")
+}
+
+.CaramelMacchiatoBouncy {
+    font-family: "CaramelMacchiatoBouncy";
+}
+
+.UbuntuBold {
+    font-family: "UbuntuBold";
+}
+
+html.expand,
+body.expand {
+    width: 800px;
+}
+
+html,
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 450px;
+    height: 600px;
+    display:flex;
+    overflow: hidden;
+    background: var(--white);
+    -webkit-transition: all 0.5s ease; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s ease;
+}
+ 
+#content { 
+    z-index: 2;
+    width: 100%;
+    height: 100%;  
+    background: var(--white);
+    -webkit-box-shadow: 2px 0px 5px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    2px 0px 5px rgba(50, 50, 50, 1);
+    box-shadow:         2px 0px 5px rgba(50, 50, 50, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+#game-drawer {
+    width:150px;
+    height: 100%;
+    padding: 0px;
+    border-right: 0.5px solid var(--gray3);
+    background: var(--white);
+    float: left;
+    /* Necessary to avoid showing content background's shadow over the footer. Z-index AND filter = actual Z-index */
+    filter: drop-shadow(-1px 6px 3px rgba(0, 0, 0, 0));
+    z-index: 0;
+}
+
+#main .background.open {
+    margin-left: 150px;
+}
+
+#main .background.closed {
+    margin-left: 0px;
+}
+
+div.game-container.expand {
+    width: 625px;
+    margin-left: 175px;
+}
+
+ul.game-items {
+    list-style-type: none;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    top: 0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    margin: 0px;
+    padding: 0px;  
+    background: var(--orange);   
+}
+
+ul.game-items li {
+    background: var(--white);
+    margin: 6px;
+    padding: 6px;
+    border-radius: 6px; 
+    -webkit-box-shadow: 0 .25rem .25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
+    -moz-box-shadow:    0 .25rem .25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
+    box-shadow:         0 .25rem .25rem rgba(0,0,0,0.2), 0 0 1rem rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+ul.game-items li h1 {
+    font-size: .6em;
+    font-weight: bolder;
+    text-align: center;
+    color: var(--gray);
+}
+
+ul.game-items li img {
+    width: 100%;
+}
+
+ul.game-items a {
+    text-decoration:none;
+}
+
+/* Hide scrollbars in game container. */
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+#right-menu { 
+    position:absolute;
+    z-index:1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 55px;
+    padding: 10px 10px;
+}
+
+.demo-delete {
+    background: var(--white);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+ul, li {
+    font-size: 28px;
+}
+
+#header {
+    height: 69px;
+    padding: 10px;
+    background: var(--white);
+    display: flex;
+    flex-direction: row;
+    line-height: 48px;
+    text-align: left;
+    border-bottom: 0.5px solid var(--gray3);
+    /* Necessary to avoid showing content background's shadow over the footer. Z-index AND filter = actual Z-index */
+    filter: drop-shadow(-1px 6px 3px rgba(0, 0, 0, 0));
+    z-index: 3;
+}
+
+#header img.icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: auto;
+    margin: auto 0px auto 0px;
+}
+
+#header .title {
+    flex-grow: 1;
+    margin: 0 0;
+    font-family: 'Menlo', monospace;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--orange);
+    width: 400px;
+}
+
+/* Aligns fontawesome icons to top instead of center */
+#header a {
+	line-height: 0;
+}
+
+#header a:not(:last-child),
+#header i.fas:not(:last-child),
+#header i.fab:not(:last-child) {
+    margin-right: 5px;
+}
+
+/* TODO show gavel after we update sites to hold the rules for the different games */
+/* TODO show cog in header after we have enough games to show the right menu */
+/* TODO show cog in right menu when there are settings. This is on the extension to enable */
+#header .fa-gavel,
+#header .fa-cog,
+.game-container .fa-cog {
+    visibility: hidden;
+}
+
+#main {
+    flex-grow: 1;
+    background-image: linear-gradient(-90deg,var(--gray4), var(--gray4));
+    display: block;
+    min-height: 1px;
+}
+
+#main .background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--gray4);
+    -webkit-transition: all 0.5s ease; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s ease;
+}
+
+/* TODO replace hover-gamepad with hover-crown once we have enough games to show in the right menu */
+#main .background.hover-gamepad {
+    background-image: linear-gradient(-90deg, var(--gray4), var(--orange));
+}
+
+/* TODO replace hover-cog with hover-gamepad once we have enough games to show in the right menu */
+#main .background.hover-cog {
+    background-image: linear-gradient(-90deg, var(--orange), var(--gray4));
+}
+
+.poly-shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: drop-shadow(0px 2px 2px rgba(3, 3, 3, 0.3));/* Y=2 require to avoid shadow on header. */
+}
+
+#main.hover-gamepad .poly-shadow,
+#main.hover-crown .poly-shadow {
+    filter: drop-shadow(0px 0px 2px rgba(103, 57, 0, 0.6));
+}
+
+.poly {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--white);
+    /* Bottom needs to be 101% otherwise the shadow shows over the footer */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 40%, 91% 47%, 91% 53%, 100% 60%, 100% 101%, 0 101%, 0% 60%, 9% 53%, 9% 47%, 0% 40%);
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 91% 47%, 91% 53%, 100% 60%, 100% 101%, 0 101%, 0% 60%, 9% 53%, 9% 47%, 0% 40%);
+}
+
+.poly-expanded {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--white);
+    /* Bottom needs to be 101% otherwise the shadow shows over the footer */    
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 40%, 95% 47%, 95% 53%, 100% 60%, 100% 101%, 0 101%, 0% 60%, 5% 53%, 5% 47%, 0% 40%);
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 95% 47%, 95% 53%, 100% 60%, 100% 101%, 0 101%, 0% 60%, 5% 53%, 5% 47%, 0% 40%);
+}
+
+#footer {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom:0px;
+    margin: 0px 0px;
+    padding: 10px 10px;
+    background: var(--white);
+    border-top: 0.5px solid var(--gray3);
+    /* Necessary to avoid showing content background's shadow over the footer. Z-index AND filter = actual Z-index */
+    filter: drop-shadow(-1px 6px 3px rgba(0, 0, 0, 0));
+    z-index: 3;
+}
+
+#logo {
+    height: 38px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#logo a {
+    height: inherit;
+}
+
+#logo a img {
+    height: inherit;
+}
+
+.logo {
+    opacity: 0;
+}
+
+#social-icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 60px;
+}
+
+i.fas,
+i.fab {
+    text-align:center;
+    font-size: 20px;
+    color: var(--gray4);
+}
+
+i.fas:hover,
+i.fab:hover {
+    color:var(--orange);
+}
+
+/** Highlight gamepad periodically. Width needs to remain the same despite scaling to avoid adjusting game board size. */
+.game-container i.fas.shake-slow,
+.game-container i.fab.shake-slow {
+    font-size: 30px;
+    width: 21px;
+}
+
+#social-icons i.fas,
+#social-icons i.fab {
+    flex-grow: 1;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    /* Necessary to avoid showing content background's shadow over the footer. Z-index AND filter = actual Z-index */
+    filter: drop-shadow(-1px 6px 3px rgba(0, 0, 0, 0));
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;    
+    padding: 0px 5px 0px 5px;
+}
+
+/* Icons needs to be higher than game to consume clicks when the game margins are negative */
+.game-container i.fas,
+.game-container i.fab {
+    margin: auto;
+    color: var(--white);
+    z-index: 100;
+}
+
+/* Game needs to be lower than game drawer icons to allow those to consume clicks when game margins are negative*/
+#game {
+    flex-grow: 1;
+    margin: 0px 10px;
+    z-index: 99;
+}
+
+/* Animate Title */
+#title {
+    flex-grow: 1;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#title svg {
+    align-items: left;
+    justify-content: left;
+} 
+
+#settings {
+    background: var(--white);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: absolute;
+    clip-path: circle(0% at 100% 0%);
+    transition: all .4s ease-in-out;    
+}
+
+#settings.show {
+    transition: all .7s ease-in-out;
+    clip-path: circle(150% at 100% 0%);
+}
+
+.settings-shadow {
+    background: var(--pink);
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    position: absolute;
+    clip-path: circle(0% at 100% 0%);
+    transition: all .5s ease-in-out;
+}
+
+.settings-shadow.show {
+    transition: all .6s ease-in-out;
+    clip-path: circle(170% at 100% 0%);
+}
+
+.settings-shadow.layer2 {
+    background: var(--orange);
+    z-index: 98;
+    transition: all .6s ease-in-out;
+}
+
+.settings-shadow.layer2.show {
+    transition: all .5s ease-in-out;
+    clip-path: circle(200% at 100% 0%);
+}
+
+.settings-shadow.layer3 {
+    background: var(--blue);
+    z-index: 97;
+    transition: all .7s ease-in-out;
+}
+
+.settings-shadow.layer3.show {
+    transition: all .4s ease-in-out;
+    clip-path: circle(250% at 100% 0%);
+}
+
+#settings .header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+#settings .header h1 {
+    font-family: "UbuntuBold";
+    color: var(--gray);
+    font-size: 2.4em;
+    flex-grow: 1;
+    margin: 0px;
+}
+
+#settings hr {
+    border-top: 1px solid var(--gray);
+    margin: 0px;
+}
+
+/* Corner ribbons */
+.ribbon {
+    position: relative;
+    visibility: hidden;
+}
+
+.ribbon.show {
+    visibility: visible;
+}
+
+.ribbon span {    
+    position: absolute;
+    left: -9px;
+    top: 8px;
+    background: var(--blue);
+    font-size: 0.6em;
+    color: var(--white);
+    padding: 4px 4px 4px 6px;
+    box-shadow: 0 0 5px rgba(0,0,0,1);
+}
+
+.ribbon:before, .ribbon:after {
+    content: "";
+    position: absolute;
+}
+
+.ribbon:before {
+    height: 0;
+    width: 0;
+    top: 3px;
+    left: -10px;
+    border-bottom: 5px solid var(--blue);
+    border-left: 5px solid transparent;
+}
+
+.ribbon:after {
+    height: 0;
+    width: 0;
+    left: 52px;
+    top: 8px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 10px solid var(--blue);
+}
+
+#toggle-video-chat-client {
+    position: absolute;
+    right: 0px;
+    z-index: 100;
+    margin: 5px;
+    visibility: collapse;
+}
+
+#video-chat-client {
+    visibility: visible;
+    position: absolute;
+    width: 175px;
+    z-index: 1;
+}
+
+i.fas.feature-drawer-handle {
+    margin-left: 0px;
+}
+
+i.fas.feature-drawer-handle.expand {
+    margin-left: -175px;
+}
+
+/* Begin Video Chat Client Styles */
+
+div.container-fluid {
+    height: 100%;
+}
+
+div#participants {
+    overflow-y: auto;
+}
+
+div.participant {
+    background: center no-repeat url("data:image/svg+xml;utf8,<svg class='bi bi-person-fill' width='80' height='45' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z' clip-rule='evenodd'/></svg>");
+    border: 1px solid var(--gray7);
+    display: inline-flex;
+    height: 90px;
+    margin: 10px 5px 150px 5px;
+    max-width: 160px;
+    overflow: hidden;
+}
+
+div.participant > video {
+    width: 100%;
+}
+
+div.participant.main {
+    visibility: collapse; /*Turning off for now*/
+    height: inherit;
+    margin: 10px 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+div.participant.main > video {
+    height: 720px;
+}
+
+div.participant.active {
+    border: 1px solid var(--pink);
+    box-shadow: 0 0 5px var(--pink);
+}
+
+div.participant.active.pinned {
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 5px var(--blue);
+}
+
+div.participant:hover {
+    cursor: pointer;
+}
+
+div.participant::before {
+    background-color: var(--black);
+    color: var(--white) !important;
+    content: attr(data-identity);
+    font-size: 10px;
+    padding: 0 5px;
+    position: absolute;
+    z-index: 1000;
+}
+
+div.participant.main::before {
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+@media (max-width: 576px) {
+    div#participants {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    div.participant.main > video {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    div.participant.main > video {
+        height: 270px;
+    }
+}
+
+.hidden-link {
+    visibility: collapse;
+}
+
+#sponsor-link {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 1000; /* we want this to be above everything */
+}
+
+.toggle-drawers { /* add this to the drawer handles to collapse them */
+    visibility: collapse;
+}
+
+.poly { /* disable drawer handle poly */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 101%, 0 101%);
+    clip-path: polygon(0 0, 100% 0, 100% 101%, 0 101%);
+}
+
+.poly-expanded { /* disable drawer handle poly-expanded (poly-expanded is used when expanding chatroom) */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 101%, 0 101%);
+    clip-path: polygon(0 0, 100% 0, 100% 101%, 0 101%);
+}
