@@ -1,0 +1,8 @@
+{ 
+	"appName": {
+		"message": "Színes Tic-Tac-Toe"
+	},
+	"appDesc": {
+		"message": "Színes Tic-Tac-Toe a Chrome-ban a tCubed-ből!"
+	}
+}

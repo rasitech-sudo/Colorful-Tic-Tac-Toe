@@ -1,0 +1,373 @@
+@keyframes fadeInScaleUp { 
+    0%   {opacity: 10; transform: scale(2);}
+    100% {transform: 100; transform: scale(.8);}
+}
+
+@keyframes popScore { 
+    0%   {transform: scale(1)}
+    25%  {transform: scale(3)}
+    50%  {transform: scale(.5);}
+    100% {transform: scale(1);}
+}
+
+@keyframes popPiece { 
+    0%   {transform: scale(1);}
+    25%  {transform: scale(1.2);}
+    50%  {transform: scale(.8);}
+    100% {transform: scale(1);}
+}
+
+@keyframes popWinningPiece { 
+    0%   {transform: scale(1)  rotate(0deg);}
+    25%  {transform: scale(2) rotate(120deg);}
+    50%  {transform: scale(.5) rotate(240deg);}
+    100% {transform: scale(1) rotate(360deg);}
+}
+
+#game {
+    /* TODO are the following properties being used?
+    -webkit-user-select: none;TODO
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent; */
+    display: flex;
+    flex-direction: column;
+}
+
+#game .header {
+    flex-grow: 1;
+    display: flex;
+    flex-direction:row;
+    margin: 10px 0;
+    /* Disallow selection of text (bec. it looks bad) */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome, Opera and Firefox */
+}
+
+#game .header .left {
+    clear: both;
+}
+
+#game .header .mode,
+#game .header .sound {
+    flex-grow: 1;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* Hide don't remove or else the layout becomes unbalanced */
+.sound.hide {
+    visibility: hidden;
+}
+
+.sound.muted .on {
+    visibility: hidden;
+}
+
+#game .header .scores {
+    flex-grow: 6;
+}
+
+#game .header .score,
+#game .header .title {
+    float: left;
+    width: 33.333333333%;
+    text-align: center;
+    padding: 0.0em;
+    margin: 0em 0em;
+    font: 1em raleway, sans-serif;
+    font-size: 1em;
+	font-weight: 600;
+	text-transform: uppercase;
+    cursor: pointer;
+}
+
+.popWinningPiece {    
+    z-index: 10;
+    animation: popWinningPiece .8s alternate ease-in-out;
+}
+
+.player1.popPiece,
+.player2.popPiece {
+    z-index: 1;
+    animation: popPiece .8s alternate ease-in-out;
+}
+.score.popScore {
+    animation: popScore .8s alternate ease-in-out;
+}
+
+#game .header .title.turn {   
+    animation: fadeInScaleUp 1.5s infinite alternate ease-in;
+}
+
+#game .header .score  {
+    font-size:2.5em;
+	font-weight: 800;
+}
+
+#game .header svg {
+    width: 40px;
+    height: 40px;
+}
+
+.mode .two-players,
+.mode .one-player-easy,
+.mode .one-player-medium,
+.mode .one-player-hard {
+    display: none;
+}
+
+.mode.two-players .two-players,
+.mode.one-player-easy .one-player-easy,
+.mode.one-player-medium .one-player-medium,
+.mode.one-player-hard .one-player-hard {
+    display: inherit;
+}
+
+#game .board {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    margin: 0 auto;
+}
+
+#game .board h1 {
+
+}
+
+#game .footer {
+}
+
+#game .footer ul {
+    list-style: none;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;    
+    text-align: center;
+    /* Disallow selection of text (bec. it looks bad) */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome, Opera and Firefox */
+}
+
+#game .footer ul li {
+    display: inline;
+    background: var(--gray1);
+    border-radius: 8px;
+    color: var(--gray7);
+    display: inline-block;
+    font-size: .5em;
+    line-height: 22px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: all 200ms ease-in;/* For Safari 3.1 to 6.0 */
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+    cursor: pointer;
+}
+  
+#game .footer ul li.reset,
+#game .footer ul li:hover {
+    color: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
+
+#game .footer ul li.blue-bg-hover.reset,
+#game .footer ul li.blue-bg-hover:hover {
+    background: var(--blue);
+}
+
+#game .footer ul li.orange-bg-hover.reset,
+#game .footer ul li.orange-bg-hover:hover {
+    background: var(--orange);
+}
+
+#game .footer ul li.pink-bg-hover.reset,
+#game .footer ul li.pink-bg-hover:hover {
+    background: var(--pink);
+}
+
+.space {
+    float: left;
+    cursor: pointer;
+    border-width: 0px;
+    border-color: var(--white);
+}
+
+.space.thirds {
+    width: 33.333333333%;
+    height: 33.333333333%;
+}
+
+.space.fifths {
+    width: 20%;
+    height: 20%;
+}
+
+.space.sevenths {
+    width: 14.28%;
+    height: 14.28%;
+}
+
+.space.left {
+    clear: both;
+}
+
+.space svg {
+    width: 100%;
+    height: 100%;
+}
+
+.line {
+    position: absolute;
+}
+
+.line.vertical {
+    width: 0%;
+    height: 100%;
+    margin-left: -2px;/*Needs to be same as half total border width */
+    border-left: 2px solid var(--gray5);
+    border-right: 2px solid var(--gray5);
+}
+
+.line.thin.vertical {
+    margin-left: -1px;/*Needs to be same as half total border width */
+    border-left: 1px solid var(--gray5);
+    border-right: 1px solid var(--gray5);
+}
+
+.line.vertical.third {
+    left:33.333333333%;
+}
+
+.line.vertical.two-third {
+    left:66.666666666%;
+}
+
+.line.vertical.fifth {
+    left: 20%;
+}
+
+.line.vertical.two-fifths {
+    left: 40%;
+}
+
+.line.vertical.three-fifths {
+    left: 60%;
+}
+
+.line.vertical.four-fifths {
+    left: 80%;
+}
+
+.line.vertical.seventh {
+    left: 14.28%;
+}
+
+.line.vertical.two-sevenths {
+    left: 28.56%;
+}
+
+.line.vertical.three-sevenths {
+    left: 42.84%;
+}
+
+.line.vertical.four-sevenths {
+    left: 57.12%;
+}
+
+.line.vertical.five-sevenths {
+    left: 71.4%;
+}
+
+.line.vertical.six-sevenths {
+    left: 85.68%;
+}
+
+.line.horizontal {
+    width: 100%;
+    height: 0%;
+    margin-top: -2px;/*Needs to be same as half total border width */
+    border-top: 2px solid var(--gray5);
+    border-bottom: 2px solid var(--gray5);
+}
+
+.line.thin.horizontal {
+    margin-top: -1px;/*Needs to be same as half total border width */
+    border-top: 1px solid var(--gray5);
+    border-bottom: 1px solid var(--gray5);
+}
+
+.line.horizontal.third {
+    top:33.333333333%;
+}
+
+.line.horizontal.two-third {
+    top:66.666666666%;
+}
+
+.line.horizontal.fifth {
+    top: 20%;
+}
+
+.line.horizontal.two-fifths {
+    top: 40%;
+}
+
+.line.horizontal.three-fifths {
+    top: 60%;
+}
+
+.line.horizontal.four-fifths {
+    top: 80%;
+}
+
+.line.horizontal.seventh {
+    top: 14.28%;
+}
+
+.line.horizontal.two-sevenths {
+    top: 28.56%;
+}
+
+.line.horizontal.three-sevenths {
+    top: 42.84%;
+}
+
+.line.horizontal.four-sevenths {
+    top: 57.12%;
+}
+
+.line.horizontal.five-sevenths {
+    top: 71.4%;
+}
+
+.line.horizontal.six-sevenths {
+    top: 85.68%;
+}

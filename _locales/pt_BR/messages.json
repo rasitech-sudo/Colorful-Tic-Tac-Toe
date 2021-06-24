@@ -1,0 +1,8 @@
+{ 
+	"appName": {
+		"message": "Tic-Tac-Toe colorido"
+	},
+	"appDesc": {
+		"message": "Tic-Tac-Toe colorido no Chrome da tCubed!"
+	}
+}

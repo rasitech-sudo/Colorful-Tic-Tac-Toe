@@ -1,0 +1,8 @@
+{ 
+	"appName": {
+		"message": "Renkli Tic-Tac-Toe"
+	},
+	"appDesc": {
+		"message": "tCubed Krom renkli Tic-Tac-Toe!"
+	}
+}
